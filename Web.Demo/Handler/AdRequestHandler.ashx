@@ -1,0 +1,1 @@
+﻿<%@ WebHandler Language="C#" CodeBehind="AdRequestHandler.ashx.cs" Class="Web.AdRequestHandler" %>
