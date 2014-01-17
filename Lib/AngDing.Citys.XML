@@ -1,0 +1,784 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AngDing.Citys</name>
+    </assembly>
+    <members>
+        <member name="T:AngDing.Citys.cCity">
+            <summary>
+            城市表 操作业务逻辑层
+            </summary>
+        </member>
+        <member name="M:AngDing.Citys.cCity.CityAdd(AngDing.Citys.cCityInfo,System.Int32@)">
+            <summary>
+             城市 添加
+            </summary>
+            <param name="obj">城市实体</param>
+            <param name="cityId">输出参数：城市ID</param>
+            <returns>返回执行结果：0-执行成功，1-存在相同的记录，2-不存在相应记录，3-失败，出现错误</returns>
+        </member>
+        <member name="M:AngDing.Citys.cCity.CityUpdate(AngDing.Citys.cCityInfo)">
+            <summary>
+            城市修改
+            </summary>
+            <param name="obj">城市实体</param>
+            <returns>返回执行结果：0-执行成功，1-存在相同的记录，2-不存在相应记录，3-失败，出现错误</returns>
+        </member>
+        <member name="M:AngDing.Citys.cCity.CityDelete(System.Int32)">
+            <summary>
+            软删除，其实是 设置 EnableState=0 ，标识是软删除
+            </summary>
+            <param name="cityId">城市ID</param>
+        </member>
+        <member name="M:AngDing.Citys.cCity.selProvince">
+            <summary>
+            查询返回所有省份列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.cCity.selProvinceById(System.Int32)">
+            <summary>
+            获取一条相应ID的省份
+            </summary>
+            <param name="Id">省份ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.cCity.showCityPathNameByprovinceId(System.Int32)">
+            <summary>
+            获取对应的CityPathName，注意，虽然返回的是实体，但只有 CityPathName 一项有值
+            </summary>
+            <param name="Id">省份ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.cCity.GetCityIdByCityName(System.String)">
+            <summary>
+            根据城市名称获取城市ID，注意，虽然返回的是实体，但只有 CityID 一项有值
+            </summary>
+            <param name="cityName">城市名称</param>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.cCity.GetParentPathByCityName(System.String)">
+            <summary>
+            根据城市名称获取城市父路径，注意，虽然返回的是实体，但只有 ParentPath 一项有值
+            </summary>
+            <param name="cityName">城市名称</param>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.cCity.GetCityNameByCityId(System.Int32)">
+            <summary>
+            根据城市ID获取城市名称，注意，虽然返回的是实体，但只有 CityName 一项有值
+            </summary>
+            <param name="CityId">城市ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.cCity.GetCityNameByParentPath(System.String)">
+            <summary>
+            根据ParentPath获取城市名称，注意，虽然返回的是实体，但只有 CityName 一项有值
+            </summary>
+            <param name="parentPath">城市父路径</param>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.cCity.GetCityByParentPath(System.String)">
+            <summary>
+            根据ParentPath获取城市实体
+            </summary>
+            <param name="parentPath">城市父路径</param>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.cCity.selProvinceName(System.Int32)">
+            <summary>
+            获取 省份名称
+            </summary>
+            <param name="id">省份ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.cCity.selProvinceByName(System.String)">
+            <summary>
+            通过 省份名称，获取 记录
+            </summary>
+            <param name="provinceName">省份名称</param>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.cCity.selProvinceIdByName(System.String)">
+            <summary>
+            通过 省份名称，获取省份 ID
+            </summary>
+            <param name="provinceName">省份名称</param>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.cCity.SelectAllCity(System.Byte,System.Byte,System.Byte)">
+            <summary>
+            选择 所有 城市
+            </summary>
+            <param name="showState">显示状态:0-不显示，1-显示，100-不限</param>
+            <param name="siteState">城市站状态:0-不是，1-是，100-不限</param>
+            <param name="capitalState">省会状态:0-不是，1-是，100-不限</param>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.cCity.SelectAllCity(System.Byte,System.Byte,System.Byte,System.Byte)">
+            <summary>
+            选择所有城市
+            </summary>
+            <param name="showState">显示状态:0-不显示，1-显示，100-不限</param>
+            <param name="siteState">城市站状态:0-不是，1-是，100-不限</param>
+            <param name="capitalState">省会状态:0-不是，1-是，100-不限</param>
+            <param name="hotState">热门状态:0-不是，1-是，100-不限</param>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.cCity.CityPageList(System.Int32,System.Int32,System.Boolean,System.String,System.String,System.Int32,System.Byte,System.Byte,System.Byte,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            选择每页记录列表
+            </summary>
+            <param name="groupNo">城市区域 编号</param>
+            <param name="parentId">城市父ID</param>
+            <param name="isAllChild">是否获取所有子城市</param>
+            <param name="cityName">城市名称</param>
+            <param name="cityCode">城市名称拼写</param>
+            <param name="cityId">城市ID</param>
+            <param name="showState">显示状态:0-不显示，1-显示，100-不限</param>
+            <param name="siteState">城市站状态:0-不是，1-是，100-不限</param>
+            <param name="capitalState">省会状态:0-不是，1-是，100-不限</param>
+            <param name="pagesize">每页记录数</param>
+            <param name="page">当前页</param>
+            <param name="recordCount">输出参数，记录数</param>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.cCity.CitySelPathNode(System.Int32,System.String,System.Byte,System.Byte)">
+            <summary>
+            获取 城市路径，按从上至下 排好顺序
+            </summary>
+            <param name="parentId">城市父ID</param>
+            <param name="parentPath">城市路径</param>
+            <param name="showState">显示状态:0-不显示，1-显示，100-不限</param>
+            <param name="siteState">城市站状态:0-不是，1-是，100-不限</param>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.cCity.selCityById(System.Int32)">
+            <summary>
+            获取一条相应ID的城市实体
+            </summary>
+            <param name="Id">城市ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.cCity.GetTopParentCityCode(System.Int32)">
+            <summary>
+            获取最顶级 城市 拼写，即省 的名称拼写
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.cCity.selCityByCode(System.String)">
+            <summary>
+            通过城市名称 拼音 获取一条相应的城市
+            </summary>
+            <param name="code">城市名称拼音</param>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.cCity.selCityByAreaCode(System.String)">
+            <summary>
+            通过 区号 获取相应的城市的信息
+            </summary>
+            <param name="areaCode">区号</param>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.cCity.selCityName(System.Int32)">
+            <summary>
+            获取 省份名称
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <!-- 对于成员“M:AngDing.Citys.cCity.CityListRand(System.Int32)”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“M:AngDing.Citys.cCity.CitySelSimilar(System.Int32,System.Int32,System.Int32)”忽略有格式错误的 XML 注释 -->
+        <member name="M:AngDing.Citys.cCity.GetAllCity">
+            <summary>
+            获取所有城市，已做好分级处理，区域是第一层，省份是第二层，城市 是第 三层
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.cCity.GetChildCitysById(System.Int32,System.String,System.Int32)">
+            <summary>
+            根据 城市ID 获取 属于 自己子城市 
+            </summary>
+            <param name="num">需获取的城市数</param>
+            <param name="cityId">城市ID,如果想查全国，CityId 请传值 0 </param>
+            <param name="ids">城市ID 集合，多个ID 以 逗号 分隔</param>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.cCity.GetChildCitysById(System.Int32,System.String)">
+            <summary>
+            根据 城市ID 获取 属于 自己子城市 ,重载方法
+            </summary>
+            <param name="cityId">城市ID</param>
+            <param name="ids">城市ID 集合，多个ID 以 逗号 分隔</param>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.cCity.GetChildCitysById(System.Int32)">
+            <summary>
+            根据 城市ID 获取 属于 自己子城市 ,重载方法
+            </summary>
+            <param name="cityId">城市ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.cCity.GetChildCitysById(System.Int32,System.Int32)">
+            <summary>
+            根据 城市ID 获取 属于 自己子城市 ,重载方法
+            </summary>
+            <param name="cityId">城市ID</param>
+            <param name="num">需获取的城市数</param>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.cCity.GetChildCitysBySpell(System.String,System.String,System.Int32)">
+            <summary>
+            根据 城市名称拼音 获取 属于 自己子城市 
+            </summary>
+            <param name="num">需获取的城市数</param>
+            <param name="cityCode">城市名称拼音,如果想查全国，cityCode  请传空值 </param>
+            <param name="ids">城市ID 集合，多个ID 以 逗号 分隔</param>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.cCity.GetChildCitysBySpell(System.String,System.String)">
+            <summary>
+            根据 城市名称拼音 获取 属于 自己子城市 ,重载方法
+            </summary>
+            <param name="cityCode">城市名称拼音</param>
+            <param name="ids">城市ID 集合，多个ID 以 逗号 分隔</param>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.cCity.GetChildCitysBySpell(System.String)">
+            <summary>
+            根据 城市名称拼音 获取 属于 自己子城市 ,重载方法
+            </summary>
+            <param name="cityCode">城市名称拼音</param>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.cCity.GetChildCitysBySpell(System.String,System.Int32)">
+            <summary>
+            根据 城市名称拼音 获取 属于 自己子城市 ,重载方法
+            </summary>
+            <param name="cityCode">城市名称拼音</param>
+            <param name="num">需获取的城市数</param>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.cCity.GetChildCitysIdBySpell(System.String)">
+            <summary>
+            通过 城市 名称拼音，获取所有子 城市 ID，组成 ID 串返回
+            </summary>
+            <param name="cityCode">城市名称拼音</param>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.cCity.GetChildCitysIdById(System.Int32)">
+            <summary>
+            通过 城市 ID，获取 所有子 城市  ID，组成 ID 串返回
+            </summary>
+            <param name="cityId">城市ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.cCity.GetCityInfoFromOutString(System.String,System.Boolean,System.Byte)">
+            <summary>
+            从 一个外部 字符串 中提取 城市 信息,没有提取到城市时，返回的实体 CityId=0
+            </summary>
+            <param name="outString">包含 城市 信息 的外部字符串</param>
+            <param name="isChineseStyle">是否中文样式，中文样式 城市 一般是省市区 这样从大到小排列，如是国外形式，即是倒序时，请设置本参数为false</param>
+            <param name="cityLevel">需提取的城市 等级，对应于 城市表 CityLevel 值，1-省，2-城市，3-区。。。类推，0-默认取最顶级，即等价于1，100-取最底级
+            每一个等级都向上兼容，即 指定的等级没有应记录时，自动获取 最近的 上一级</param>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.cCity.GetCityInfoFromOutString(System.String,System.Boolean)">
+            <summary>
+            从 一个外部 字符串 中提取 城市 信息,没有提取到城市时，返回的实体 CityId=0，
+            默认返回 最底级的 城市
+            </summary>
+            <param name="outString">包含 城市 信息 的外部字符串</param>
+            <param name="isChineseStyle">是否中文样式，中文样式 城市 一般是省市区 这样从大到小排列，如是国外形式，即是倒序时，请设置本参数为false</param>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.cCity.GetCityInfoFromOutString(System.String,System.Byte)">
+            <summary>
+            从 一个外部 字符串 中提取 城市 信息,没有提取到城市时，返回的实体 CityId=0，
+            字符串中包含的城市 需要是 按中国的习惯 顺序排列的
+            </summary>
+            <param name="outString">包含 城市 信息 的外部字符串</param>
+            <param name="cityLevel">需提取的城市 等级，对应于 城市表 CityLevel 值，1-省，2-城市，3-区。。。类推，0-默认取最顶级，即等价于1，100-取最底级
+            每一个等级都向上兼容，即 指定的等级没有应记录时，自动获取 最近的 上一级</param>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.cCity.GetCityInfoFromOutString(System.String)">
+            <summary>
+            从 一个外部 字符串 中提取 城市 信息,没有提取到城市时，返回的实体 CityId=0,
+            字符串中包含的城市 需要是 按中国的习惯 顺序排列的，默认返回 最底级的 城市
+            </summary>
+            <param name="outString">包含 城市 信息 的外部字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.cCity.AreaGroupAdd(AngDing.Citys.cAreaGroupInfo)">
+            <summary>
+            区域 添加
+            </summary>
+            <param name="info">区域实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.cCity.AreaGroupEdit(AngDing.Citys.cAreaGroupInfo)">
+            <summary>
+            区域修改
+            </summary>
+            <param name="info">区域实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.cCity.AreaGroupDelete(AngDing.Citys.cAreaGroupInfo)">
+            <summary>
+             区域删除
+            </summary>
+            <param name="info">区域实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.cCity.AreaGroupPageList(System.Int32,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            区域列表
+            </summary>
+            <param name="groupId">区域编号</param>
+            <param name="pagesize">每页显示数目</param>
+            <param name="page">页码</param>
+            <param name="recordCount">输出参数：记录数</param>
+            <returns></returns>
+        </member>
+        <member name="T:AngDing.Citys.cAreaGroupInfo">
+            <summary>
+            全国区域表，如华南、华东等，把相应城市按区域分组
+            </summary>
+        </member>
+        <member name="M:AngDing.Citys.cAreaGroupInfo.#ctor">
+             <summary>
+            构造函数
+             </summary>
+        </member>
+        <member name="P:AngDing.Citys.cAreaGroupInfo.GroupId">
+            <summary>
+            区域标识，表 自增长字段
+            </summary>
+        </member>
+        <member name="P:AngDing.Citys.cAreaGroupInfo.GroupName">
+            <summary>
+            区域名称
+            </summary>
+        </member>
+        <member name="P:AngDing.Citys.cAreaGroupInfo.GroupNo">
+            <summary>
+            区域编号
+            </summary>
+        </member>
+        <member name="T:AngDing.Citys.DbCity">
+            <summary>
+            昂鼎 公共城市 统一类库，城市处理类 数据层
+            </summary>
+        </member>
+        <member name="M:AngDing.Citys.DbCity.CityOperation(AngDing.Citys.cCityInfo,AngDing.AdDBbase.DataProviderAction,System.Int32@)">
+            <summary>
+            城市 添加与 修改，返回执行结果，0-执行成功，1-存在相同的记录，2-不存在相应记录，3-失败，出现错误
+            </summary>
+            <param name="obj">城市 实体</param>
+            <param name="action">操作类型，枚举 DataProviderAction 值</param>
+            <param name="cityId">输出 城市ID </param>
+            <returns>返回执行结果：0-执行成功，1-存在相同的记录，2-不存在相应记录，3-失败，出现错误</returns>
+        </member>
+        <member name="M:AngDing.Citys.DbCity.CityAdd(AngDing.Citys.cCityInfo,System.Int32@)">
+            <summary>
+             重载方法， 城市 添加
+            </summary>
+            <param name="obj"></param>
+            <param name="cityId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.DbCity.CityUpdate(AngDing.Citys.cCityInfo)">
+            <summary>
+            重载方法，城市修改
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.DbCity.CityDelete(System.Int32)">
+            <summary>
+            软删除，其实是 设置 EnableState=0 ，标识是软删除
+            </summary>
+            <param name="cityId"></param>
+        </member>
+        <member name="M:AngDing.Citys.DbCity.selProvince">
+            <summary>
+            查询返回所有省份列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.DbCity.selProvinceById(System.Int32)">
+            <summary>
+            获取一条相应ID的省份
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.DbCity.showCityPathNameByprovinceId(System.Int32)">
+            <summary>
+            返回对应的CityPathName
+            </summary>
+            <param name="Id">provinceId</param>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.DbCity.GetCityIdByCityName(System.String)">
+            <summary>
+            根据城市ID获取城市名称
+            </summary>
+            <param name="CityName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.DbCity.GetParentPathByCityName(System.String)">
+            <summary>
+            根据城市名称获取ParentPath，注意，这里虽然返回的是一个实体，但实体里只有 ParentPath 有值
+            </summary>
+            <param name="CityName">城市名称</param>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.DbCity.GetCityNameByCityId(System.Int32)">
+            <summary>
+            根据城市ID获取城市名称，注意，这里虽然返回的是一个实体，但实体里只有 CityName 有值
+            </summary>
+            <param name="CityId">城市ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.DbCity.GetCityNameByParentPath(System.String)">
+            <summary>
+            根据ParentPath获取城市实体对象
+            </summary>
+            <param name="parentPath"> 城市 路径</param>
+            <returns>城市实体</returns>
+        </member>
+        <member name="M:AngDing.Citys.DbCity.GetCityByParentPath(System.String)">
+            <summary>
+            根据ParentPath获取城市实体对象
+            </summary>
+            <param name="parentPath"> 城市 路径</param>
+            <returns>城市实体</returns>
+        </member>
+        <member name="M:AngDing.Citys.DbCity.selProvinceName(System.Int32)">
+            <summary>
+            根据 省份 ID 获取 省份名称
+            </summary>
+            <param name="id">省份ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.DbCity.selProvinceByName(System.String)">
+            <summary>
+            通过 省份名称，获取 记录
+            </summary>
+            <param name="provinceName">省份名称</param>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.DbCity.selProvinceIdByName(System.String)">
+            <summary>
+            通过省份名称，获取省份ID
+            </summary>
+            <param name="provinceName">省份名称</param>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.DbCity.CityPageList(System.Int32,System.Int32,System.Boolean,System.String,System.String,System.Int32,System.Byte,System.Byte,System.Byte,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            选择每页记录列表
+            </summary>
+            <param name="groupNo">参数值</param>
+            <param name="provinceId"></param>
+            <param name="pagesize">每页记录数</param>
+            <param name="page">当前页</param>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.DbCity.SelectAllCity(System.Byte,System.Byte,System.Byte,System.Byte)">
+            <summary>
+            选择 所有 城市
+            </summary>
+            <param name="showState">显示状态</param>
+            <param name="siteState">城市站状态</param>
+            <param name="capitalState">省会状态</param>
+            <param name="hotState">热门状态</param>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.DbCity.selCityById(System.Int32)">
+            <summary>
+            通过城市ID 获取一条相应ID的城市信息
+            </summary>
+            <param name="Id">需获取实体的城市ID</param>
+            <returns>城市实体 对象</returns>
+        </member>
+        <member name="M:AngDing.Citys.DbCity.GetTopParentCityCode(System.Int32)">
+            <summary>
+            获取最顶级 城市 拼写，即省 的名称拼写
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.DbCity.selCityByCode(System.String)">
+            <summary>
+            通过城市名称 拼音 获取一条相应的城市
+            </summary>
+            <param name="code">城市名称拼音</param>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.DbCity.selCityByAreaCode(System.String)">
+            <summary>
+            通过 区号 获取相应的城市的信息
+            </summary>
+            <param name="areaCode">区号</param>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.DbCity.CitySelPathNode(System.Int32,System.String,System.Byte,System.Byte)">
+            <summary>
+            获取 城市路径，按从上至下 排好顺序
+            </summary>
+            <param name="parentId"></param>
+            <param name="parentPath"></param>
+            <param name="showState"></param>
+            <param name="siteState"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.DbCity.selCityName(System.Int32)">
+            <summary>
+            获取 省份名称
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.DbCity.CityListRand(System.Int32)">
+            <summary>
+            随机选择 NUM 个城市
+            </summary>
+            <param name="num">需获取的城市数</param>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.DbCity.CitySelSimilar(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            根据 某城市ID 获取相关的城市站，
+            </summary>
+            <param name="siteId">当前城市站ID</param>
+            <param name="groupNo">当前区域编号</param>
+            <param name="selNum">需获取的城市站数量</param>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.DbCity.GetChildCitysBySpell(System.String,System.String,System.Int32)">
+            <summary>
+            根据 城市名称拼音 获取 属于 自己子城市 
+            </summary>
+            <param name="num">需获取的城市数</param>
+            <param name="cityCode">城市名称拼音</param>
+            <param name="ids">城市ID 集合，多个ID 以 逗号 分隔</param>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.DbCity.GetChildCitysById(System.Int32,System.String,System.Int32)">
+            <summary>
+            根据 城市名称拼音 获取 属于 自己子城市 
+            </summary>
+            <param name="num">需获取的城市数</param>
+            <param name="cityId">城市ID</param>
+            <param name="ids">城市ID 集合，多个ID 以 逗号 分隔</param>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.DbCity.GetChildCitysIdById(System.Int32)">
+            <summary>
+            通过 城市 ID，获取 所有子 城市  ID，组成 ID 串返回
+            </summary>
+            <param name="cityId">城市ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.DbCity.GetChildCitysIdBySpell(System.String)">
+            <summary>
+            通过 城市 名称拼音，获取所有子 城市 ID，组成 ID 串返回
+            </summary>
+            <param name="cityCode">城市名称拼音</param>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.DbCity.GetCityInfoFromOutString(System.String,System.Boolean,System.Byte)">
+            <summary>
+            从 一个外部 字符串 中提取 城市 信息,没有提取到城市时，返回的实体 CityId=0
+            </summary>
+            <param name="outString">包含 城市 信息 的外部字符串</param>
+            <param name="isChineseStyle">是否中文样式，中文样式 城市 一般是省市区 这样从大到小排列，如是国外形式，即是倒序时，请设置本参数为false</param>
+            <param name="cityLevel">需提取的城市 等级，对应于 城市表 CityLevel 值，1-省，2-城市，3-区。。。类推，0-默认取最顶级，即等价于1，100-取最底级
+            每一个等级都向上兼容，即 指定的等级没有应记录时，自动获取 最近的 上一级</param>
+            <returns></returns>
+        </member>
+        <member name="P:AngDing.Citys.cCityInfo.CityId">
+            <summary>
+            城市编号
+            </summary>
+        </member>
+        <member name="P:AngDing.Citys.cCityInfo.CityName">
+            <summary>
+            城市名称
+            </summary>
+        </member>
+        <member name="P:AngDing.Citys.cCityInfo.CityAliasName">
+            <summary>
+            城市别名,有的城市有多种叫法，就存储在此字段
+            </summary>
+        </member>
+        <member name="P:AngDing.Citys.cCityInfo.CityPathName">
+            <summary>
+            城市名称全称，包括 上级名称，类 广东-广州-天河区
+            </summary>
+        </member>
+        <member name="P:AngDing.Citys.cCityInfo.CityCode">
+            <summary>
+            城市名称拼写
+            </summary>
+        </member>
+        <member name="P:AngDing.Citys.cCityInfo.ParentId">
+            <summary>
+            直属 父 城市 编号
+            </summary>
+        </member>
+        <member name="P:AngDing.Citys.cCityInfo.ParentPath">
+            <summary>
+            父城市 路径，即 一直到顶级城市的各节点组合，类 0.1.2.3.
+            </summary>
+        </member>
+        <member name="P:AngDing.Citys.cCityInfo.ShowOrder">
+            <summary>
+            排序数
+            </summary>
+        </member>
+        <member name="P:AngDing.Citys.cCityInfo.ShowState">
+            <summary>
+            显示状态，0：不显示，1：显示，。。。后续可 扩展
+            </summary>
+        </member>
+        <member name="P:AngDing.Citys.cCityInfo.ShowStyle">
+            <summary>
+            显示样式，0 默认，。。。后续可扩展，不同的城市站，显示 样式 可自定义
+            </summary>
+        </member>
+        <member name="P:AngDing.Citys.cCityInfo.SiteState">
+            <summary>
+            城市站状态，标识 城市 是否开通城市站，0：不开通，1：开通
+            </summary>
+        </member>
+        <member name="P:AngDing.Citys.cCityInfo.ChildNum">
+            <summary>
+            直属子类 数目
+            </summary>
+        </member>
+        <member name="P:AngDing.Citys.cCityInfo.GroupNo">
+            <summary>
+            分区，全国 各 大分区值，把全国 按 华南，华东，华北，东北 等 分成几大区
+            </summary>
+        </member>
+        <member name="P:AngDing.Citys.cCityInfo.Group_GroupName">
+            <summary>
+            关联表 字段，大区名称
+            </summary>
+        </member>
+        <member name="P:AngDing.Citys.cCityInfo.CapitalState">
+            <summary>
+            城市 状态 标识，标识是否是省会城市，直辖市 还是 普通城市，0：普通城市，1：直辖市，2：省会城市
+            </summary>
+        </member>
+        <member name="P:AngDing.Citys.cCityInfo.EnableState">
+            <summary>
+            启用状态，用于标识 是否已被禁用，即 软删除，前台 不可用
+            </summary>
+        </member>
+        <member name="P:AngDing.Citys.cCityInfo.CityLevel">
+            <summary>
+            城市级别，可设置如 1-省，2-市，3-区，4-街道
+            </summary>
+        </member>
+        <member name="P:AngDing.Citys.cCityInfo.HotState">
+            <summary>
+            热门城市 标识。1：是，0：不是
+            </summary>
+        </member>
+        <member name="P:AngDing.Citys.cCityInfo.CityAreaCode">
+            <summary>
+            城市  区号
+            </summary>
+        </member>
+        <member name="P:AngDing.Citys.cCityInfo.SiteUrlState">
+            <summary>
+            城市站地址形式。 0：默认，1：目录形式，2：二级域名
+            </summary>
+        </member>
+        <member name="T:AngDing.Citys.AreaGroupProvince">
+            <summary>
+            城市区域及省份集合实体类
+            </summary>
+        </member>
+        <member name="P:AngDing.Citys.AreaGroupProvince.GroupNo">
+            <summary>
+            区域 编号
+            </summary>
+        </member>
+        <member name="P:AngDing.Citys.AreaGroupProvince.GroupName">
+            <summary>
+            区域名称
+            </summary>
+        </member>
+        <member name="P:AngDing.Citys.AreaGroupProvince.ProviceList">
+            <summary>
+            区域下 省份集合
+            </summary>
+        </member>
+        <member name="T:AngDing.Citys.ProvinceCity">
+            <summary>
+            省份及城市集合 实体类
+            </summary>
+        </member>
+        <member name="P:AngDing.Citys.ProvinceCity.ProvinceId">
+            <summary>
+            省份 ID
+            </summary>
+        </member>
+        <member name="P:AngDing.Citys.ProvinceCity.ProvinceName">
+            <summary>
+            省份名称
+            </summary>
+        </member>
+        <member name="P:AngDing.Citys.ProvinceCity.CityCode">
+            <summary>
+            省份名称拼写
+            </summary>
+        </member>
+        <member name="P:AngDing.Citys.ProvinceCity.ProvinceSiteUrl">
+            <summary>
+            城市 地址
+            </summary>
+        </member>
+        <member name="P:AngDing.Citys.ProvinceCity.Citys">
+            <summary>
+            省份下 城市集合
+            </summary>
+        </member>
+        <member name="T:AngDing.Citys.DbAreaGroup">
+            <summary>
+            区域城市 表 数据操作层
+            </summary>
+        </member>
+        <member name="M:AngDing.Citys.DbAreaGroup.AreaGroupAddEditDelete(AngDing.Citys.cAreaGroupInfo,AngDing.AdDBbase.DataProviderAction)">
+            <summary>
+            城市分组的添加,删除,修改
+            </summary>
+            <param name="info"></param>
+            <param name="action"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.DbAreaGroup.AreaGroupAdd(AngDing.Citys.cAreaGroupInfo)">
+            <summary>
+            
+            </summary>
+            <param name="info"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AngDing.Citys.DbAreaGroup.AreaGroupPageList(System.Int32,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            按区域 获取分页 数据
+            </summary>
+            <param name="groupNo">参数值</param>
+            <param name="pagesize">每页记录数</param>
+            <param name="page">当前页</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
