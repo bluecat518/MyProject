@@ -7,9 +7,11 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div class="main">
-        <%=LinqSample()%>
+    <div class="main">        
         <div class="container">
+            <div class="container01">
+                <%=LinqSample()%>
+            </div>
             <div class="msgContainer">
                 <%=DateTimeComapre()%>
             </div>

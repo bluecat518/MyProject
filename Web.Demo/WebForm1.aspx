@@ -46,7 +46,6 @@ pic_box_inner
 #case_pic_pre .right_active {
 	BACKGROUND: url(case_sprites.gif) no-repeat -40px 0px;
 }
-/*_____________________________________________*/
 </style>
 </head>
 <body>

@@ -13,6 +13,7 @@
     <RootNamespace>Web.Demo</RootNamespace>
     <AssemblyName>Web.Demo</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -33,13 +34,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AngDing">
-      <HintPath>..\..\..\工作文档嘿嘿嘿咻咻咻\2、通用类、DLL\AngDing.dll</HintPath>
+      <HintPath>..\Lib\AngDing.dll</HintPath>
     </Reference>
     <Reference Include="AngDing.Citys">
       <HintPath>..\Lib\AngDing.Citys.dll</HintPath>
-    </Reference>
-    <Reference Include="DotNet.Highcharts">
-      <HintPath>..\Lib\DotNet.Highcharts.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -59,18 +57,24 @@
     <Reference Include="System.Web.ApplicationServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AngularJSDemo.aspx" />
     <Content Include="BinaryImagePage.aspx" />
+    <Content Include="css\animations.css" />
+    <Content Include="css\app.css" />
+    <Content Include="css\bootstrap-responsive.css" />
+    <Content Include="css\bootstrap-responsive.min.css" />
+    <Content Include="css\bootstrap.css" />
+    <Content Include="css\bootstrap.min.css" />
     <Content Include="Demo.aspx" />
     <Content Include="Demo2.aspx" />
     <Content Include="Demo3.aspx" />
     <Content Include="Demo4.aspx" />
-    <Content Include="Demos\WebForm1.aspx" />
     <Content Include="EmployerTypeConfig.xml" />
     <Content Include="HighChartDemo.aspx" />
     <Content Include="images\loading.gif" />
     <Content Include="images\loading2.gif" />
-    <Content Include="JquerySamplePage.aspx" />
-    <Content Include="JsonType.aspx" />
+    <Content Include="js\angular\angular.js" />
+    <Content Include="js\controllers.js" />
     <Content Include="js\highcharts\adapters\mootools-adapter.js" />
     <Content Include="js\highcharts\adapters\mootools-adapter.src.js" />
     <Content Include="js\highcharts\adapters\prototype-adapter.js" />
@@ -555,8 +559,6 @@
     <Content Include="Scripts\jquery\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery\jquery-1.4.1.min.js" />
     <Content Include="TestDateTime.aspx" />
-    <Content Include="TestDemoPage.aspx" />
-    <Content Include="TestJavaScriptPage.aspx" />
     <Content Include="TestMarkMatchPage.aspx" />
     <Content Include="TestSiteUrlPage.aspx" />
     <Content Include="TestTryCatchPage.aspx" />
@@ -574,6 +576,13 @@
     <Content Include="XmlLoadSamplePage.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AngularJSDemo.aspx.cs">
+      <DependentUpon>AngularJSDemo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AngularJSDemo.aspx.designer.cs">
+      <DependentUpon>AngularJSDemo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="BaseClasses\Counter.cs" />
     <Compile Include="BaseClasses\Globals.cs" />
     <Compile Include="BaseClasses\Thumbnail.cs" />
@@ -606,13 +615,6 @@
     <Compile Include="Demo4.aspx.designer.cs">
       <DependentUpon>Demo4.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Demos\WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Demos\WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Handler\AjaxHandler.ashx.cs">
       <DependentUpon>AjaxHandler.ashx</DependentUpon>
     </Compile>
@@ -631,20 +633,6 @@
     </Compile>
     <Compile Include="HighChartDemo.aspx.designer.cs">
       <DependentUpon>HighChartDemo.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="JquerySamplePage.aspx.cs">
-      <DependentUpon>JquerySamplePage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="JquerySamplePage.aspx.designer.cs">
-      <DependentUpon>JquerySamplePage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="JsonType.aspx.cs">
-      <DependentUpon>JsonType.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="JsonType.aspx.designer.cs">
-      <DependentUpon>JsonType.aspx</DependentUpon>
     </Compile>
     <Compile Include="LhgDialogContentPage.aspx.cs">
       <DependentUpon>LhgDialogContentPage.aspx</DependentUpon>
@@ -713,20 +701,6 @@
     <Compile Include="TestDateTime.aspx.designer.cs">
       <DependentUpon>TestDateTime.aspx</DependentUpon>
     </Compile>
-    <Compile Include="TestDemoPage.aspx.cs">
-      <DependentUpon>TestDemoPage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="TestDemoPage.aspx.designer.cs">
-      <DependentUpon>TestDemoPage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="TestJavaScriptPage.aspx.cs">
-      <DependentUpon>TestJavaScriptPage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="TestJavaScriptPage.aspx.designer.cs">
-      <DependentUpon>TestJavaScriptPage.aspx</DependentUpon>
-    </Compile>
     <Compile Include="TestMarkMatchPage.aspx.cs">
       <DependentUpon>TestMarkMatchPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -793,12 +767,6 @@
     <None Include="js\jquery-easyui-1.3.2\themes\default\images\Thumbs.db" />
     <None Include="js\jquery-easyui-1.3.2\themes\gray\images\Thumbs.db" />
     <None Include="js\jquery-easyui-1.3.2\themes\metro\images\Thumbs.db" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Model\Model.csproj">
-      <Project>{5D1DF39C-6D2A-4E60-B54B-847224A66B1E}</Project>
-      <Name>Model</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
